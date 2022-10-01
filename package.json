@@ -1,7 +1,7 @@
 {
   "name": "bitbank",
   "version": "1.0.0",
-  "description": "projeto do bitbank para os clientes",
+  "description": "dados bancarios bitbank",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,9 +12,10 @@
   },
   "author": "Wendel",
   "license": "ISC",
-  "type": "module",
   "bugs": {
     "url": "https://github.com/WendelPaesx/bitbank/issues"
   },
-  "homepage": "https://github.com/WendelPaesx/bitbank#readme"
+  "homepage": "https://github.com/WendelPaesx/bitbank#readme",
+  "type": "module"
+  
 }
