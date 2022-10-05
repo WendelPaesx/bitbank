@@ -1,11 +1,21 @@
 class cliente {
     nome;
-    cpf;
-    rg;
+    _cpf;
+    get cpf() {
+        return this._cpf;
+
+    }
+    constructor(nome, cpf) {
+        this.nome = nome
+        this._cpf = cpf
+
+    }
+
 
 
 }
 class contaCorrente {
+    static contador = 0;
     agencia;
     _cliente;
 
@@ -27,9 +37,10 @@ class contaCorrente {
         return this._saldo
     }
 
-    constructor(cliente, agencia) {
+    constructor(agencia, cliente) {
         this.agencia = agencia
         this.cliente = cliente
+        contaCorrente.contador += 1
 
     }
 
@@ -55,7 +66,7 @@ class contaCorrente {
 
     transferir(valor, conta) {
         const valorSacado = this.sacar(valor)
-        conta.depositar(valorSacado)
+
 
 
     }
@@ -63,51 +74,31 @@ class contaCorrente {
 }
 
 
-const cliente1 = new cliente();
+
+const cliente1 = new cliente('Ricardo', 11122233309);
+const cliente2 = new cliente('alice', 11122288809);
 
 
 
-const contaCorrenteRicardo = new contaCorrente();
-contaCorrenteRicardo.agencia = '1001';
-contaCorrenteRicardo.cliente = cliente1;
-contaCorrenteRicardo.depositar(500)
-
-const conta3 = new contaCorrente()
-conta3.cliente = new cliente()
-conta3.nome = 'Alicel';
-conta3.cpf = 987654321;
-conta3.agencia = 102;
+const contaCorrenteRicardo = new contaCorrente(1001, cliente1)
+const conta2 = new contaCorrente(102, cliente2)
 
 
 
 
 
 
+let valor = 200
+contaCorrenteRicardo.transferir(valor, conta2)
+
+console.log(contaCorrente.contador)
 
 
 
 
-cliente1.nome = 'Ricardo';
-cliente1.cpf = '11122233309';
-cliente1.agencia = '1001';
-cliente1._saldo = 0;
-cliente1.rg = '123456789';
 
-const cliente2 = new cliente();
-cliente2.nome = 'alice';
-cliente2.cpf = '11122288809';
-cliente2.agencia = '1001';
-cliente2._saldo = 0;
-cliente2.rg = '987654321';
 
-const conta2 = new contaCorrente()
-conta2.cliente = cliente2
-conta2.agencia = 102
 
-contaCorrenteRicardo.transferir(200, conta2)
-
-console.log(conta2)
-console.log(contaCorrenteRicardo)
 
 
 
