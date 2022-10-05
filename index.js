@@ -7,9 +7,31 @@ class cliente {
 }
 class contaCorrente {
     agencia;
-    cliente;
+    _cliente;
+
+    set cliente(novoValor) {
+        if (novoValor instanceof cliente) {
+            this._cliente = novoValor;
+        }
+
+
+    }
+
+    get cliente() {
+        return this.cliente
+    }
 
     _saldo = 0;
+
+    get saldo() {
+        return this._saldo
+    }
+
+    constructor(cliente, agencia) {
+        this.agencia = agencia
+        this.cliente = cliente
+
+    }
 
 
     sacar(valor) {
@@ -28,16 +50,16 @@ class contaCorrente {
         } else {
             this._saldo += valor;
         }
-
     }
 
-    transferir(valor, conta){
+
+    transferir(valor, conta) {
         const valorSacado = this.sacar(valor)
         conta.depositar(valorSacado)
 
 
     }
-    
+
 }
 
 
@@ -49,6 +71,14 @@ const contaCorrenteRicardo = new contaCorrente();
 contaCorrenteRicardo.agencia = '1001';
 contaCorrenteRicardo.cliente = cliente1;
 contaCorrenteRicardo.depositar(500)
+
+const conta3 = new contaCorrente()
+conta3.cliente = new cliente()
+conta3.nome = 'Alicel';
+conta3.cpf = 987654321;
+conta3.agencia = 102;
+
+
 
 
 
